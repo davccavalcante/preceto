@@ -1,0 +1,206 @@
+---
+name: preceto
+description: "Otimize, refine, melhore e crie prompts para LLMs usando técnicas avançadas de engenharia de prompts. Integre dados do usuário, APIs e ferramentas para gerar prompts eficientes, reduzindo alucinações e melhorando o raciocínio em tarefas complexas. Suporte para desenvolvimento de sites como preceto-website em Next.js com App Router, React, TypeScript, Framer Motion, Shadcn/ui, Radix UI, Phosphor Icons, Prebid.js e @google/genai. Incorpore CI/CD para GitHub com deploy no Vercel. Foque em design minimalista estilo xAI, com input limitado a 3000 caracteres, seleção de modelos (mini, plus, engineer) e estilos (simple, concise, technical). Outputs formatados por modelo: mini (texto corrigido), plus (MD code), engineer (YAML + MD code), com limites de 8000 caracteres. Use múltiplas keys Gemini 2.5 Pro em .env com loop para resiliência."
+author: "David C Cavalcante"
+version: "1.0.0"
+company: "Takk Innovate Studio"
+category: "Development"
+tags: ["development", "ia-ml", "prompt-engineering", "llmops", "lmops", "nextjs", "react", "typescript", "framer-motion", "shadcn-ui", "radix-ui", "phosphor-icons", "prebidjs", "google-genai", "cicd", "vercel", "gemini", "cot", "react-prompt", "tot", "self-consistency", "meta-prompting", "rag", "multi-agent", "prompt-chaining", "zero-shot", "few-shot", "role-prompting", "iterative-prompting"]
+license: "CC BY-NC-SA"
+repository: "https://github.com/takk-innovate-studio/preceto"
+homepage: "https://preceto.vercel.app"
+bugs: "https://github.com/takk-innovate-studio/preceto/issues"
+tools: ['Gemini/generate_prompt', 'LangChain/orchestrate_prompt', 'WebSearch/query_internet', 'CodeExecution/execute_refinement', 'GitHub/get_repo_info', 'PyPI/get_package_details', 'Virtuals/launch_prompt_agent', 'OriginTrail/get_dkg_data', 'LangGraph/build_workflow', 'CrewAI/setup_agents', 'HuggingFace/get_model_details', 'GoogleGenAI/integrate_api']
+dependencies: ["next@16.1.6", "react@19.2", "typescript@5.9", "framer-motion", "shadcn-ui", "radix-ui", "phosphor-icons", "prebid.js", "@google/genai", "langchain>=2.0", "huggingface-hub", "torch", "tensorflow", "keras", "nodejs>=20"]
+compatibility: ["Grok-4", "Gemini 2.5 Pro", "LLM versions>=2026", "Next.js App Router", "React 19", "LangChain frameworks", "LangGraph", "CrewAI"]
+handoffs:
+  - label: Refine Prompt
+    agent: RefineAgent
+    prompt: Refine o prompt gerado com base em feedback, garantindo alinhamento com técnicas selecionadas e limites de caracteres.
+    showContinueOn: true
+    send: true
+  - label: Test Output
+    agent: TestAgent
+    prompt: Teste o prompt gerado em um LLM simulado, relate qualidade e sugestões de melhoria.
+    showContinueOn: true
+    send: false
+  - label: Generate YAML
+    agent: FormatAgent
+    prompt: Formate o output em YAML para engenharia avançada, incluindo etapas e instruções em MD code.
+    showContinueOn: true
+    send: true
+  - label: Orchestrate Multi-Prompt
+    agent: MetaAgent
+    prompt: Use ReAct para orquestrar múltiplos prompts e sintetize um final otimizado.
+    showContinueOn: true
+    send: true
+  - label: Explore ToT Paths
+    agent: ToTAgent
+    prompt: Aplique Tree of Thoughts para explorar variações de prompts, usando DFS para backtracking.
+    showContinueOn: true
+    send: true
+  - label: Integrate RAG
+    agent: RAGAgent
+    prompt: Integre retrieval de dados externos ao prompt para enriquecer contexto.
+    showContinueOn: true
+    send: true
+  - label: Apply Self-Consistency
+    agent: ConsistencyAgent
+    prompt: Gere múltiplas versões e vote na mais consistente para robustez.
+    showContinueOn: true
+    send: true
+---
+
+# Engenharia de Prompts Avançada
+
+Otimização abrangente de prompts para LLMs, considerando técnicas clássicas e avançadas como CoT para decomposição passo a passo, ReAct para reasoning+acting, ToT para exploração de caminhos múltiplos, e Self-Consistency para robustez. Integra desenvolvimento com Next.js para o site preceto-website, React para UI interativa, TypeScript para tipagem segura, Framer Motion para animações suaves, Shadcn/ui e Radix UI para componentes minimalistas, Phosphor Icons para ícones, Prebid.js para monetização opcional, e @google/genai para integração com Gemini 2.5 Pro. Foque em input de 3000 caracteres max, seleção de modelo (mini: simple correção; plus: MD formatado; engineer: YAML + MD com técnicas completas), estilos (simple, concise, technical), e outputs limitados a 8000 caracteres. Use loop de keys em .env para resiliência em chamadas API.
+
+## Capacidades Principais
+
+- **Otimização de Prompts**: Refine inputs do usuário para prompts eficientes, aplicando correções gramaticais, reorganização e formatação por modelo.
+- **Geração por Técnica**: Acesse técnicas como Zero-Shot, Few-Shot, CoT, com foco em redução de alucinações e melhoria de raciocínio.
+- **Formatação Customizada**: Outputs em texto simple (mini), MD code (plus), ou YAML + MD (engineer) com etapas detalhadas.
+- **Integração de Ferramentas**: Use APIs para pesquisa, execução de código e orquestração de agents para prompts dinâmicos.
+- **UI e Desenvolvimento**: Gere configurações para preceto-website, incluindo componentes React para input/output, ícones para seleção e ações.
+- **Multi-Agent Orchestration**: Use meta-agents para integrar técnicas heterogêneas, inspirado em LangChain e CrewAI.
+- **RAG e Retrieval**: Integre dados externos para prompts enriquecidos.
+- **ML Integration**: Use modelos como Gemini para geração, com loop de keys para economia de tokens.
+- **CI/CD e Deploy**: Configure workflows para GitHub e Vercel, garantindo deploys automáticos.
+
+## APIs Disponíveis
+
+### Geração e Otimização
+- `Gemini/generate_prompt` - Gere ou refine prompt usando Gemini 2.5 Pro, com suporte a múltiplas keys em loop.
+- `LangChain/orchestrate_prompt` - Orquestre chains de prompts com técnicas como CoT ou ReAct.
+- `HuggingFace/get_model_details` - Detalhes de modelos para integração em prompts.
+
+### Pesquisa e Contexto
+- `WebSearch/query_internet` - Agrega dados para enriquecer prompts com contexto real.
+- `OriginTrail/get_dkg_data` - Dados verificáveis para prompts sem alucinações.
+
+### Desenvolvimento
+- `CodeExecution/execute_refinement` - Execute scripts para testar e refinar prompts em TypeScript ou React.
+- `GitHub/get_repo_info` - Obtenha repositórios para preceto-website.
+- `PyPI/get_package_details` - Detalhes de pacotes para dependências como shadcn-ui.
+- `LangGraph/build_workflow` - Construa workflows para multi-prompts.
+- `CrewAI/setup_agents` - Configure agents para tarefas de engenharia.
+- `Virtuals/launch_prompt_agent` - Lance agents para automação de prompts.
+- `GoogleGenAI/integrate_api` - Integre Gemini com loop de keys.
+
+## Fluxos de Trabalho Comuns
+
+### 1. Geração Básica → Refinamento
+Usuário: "Otimize prompt para análise" → Gemini/generate_prompt (gere versão inicial por modelo: mini/plus/engineer) → LangChain/orchestrate_prompt (aplique CoT: 1. Corrija gramática; 2. Reorganize; 3. Formate) → Aplique CoT: Pense passo a passo - 1. Analise input; 2. Selecione técnica; 3. Gere output limitado.
+
+### 2. Seleção de Modelo → Output Formatado
+Usuário: "Crie prompt engineer para task" → Gemini/generate_prompt (use engineer: YAML header + MD steps) → CodeExecution/execute_refinement (teste formato) → Use ReAct: Thought: Verifique limites; Action: Chame API; Observation: Output gerado; Thought: Ajuste se >8000 chars.
+
+### 3. Integração de Técnicas
+Usuário: "Aplique ToT em prompt" → LangGraph/build_workflow (construa árvore) → Gemini/generate_prompt (gere variações) → Aplique ToT: Gere caminhos - Caminho1: Simple; Caminho2: Concise; Caminho3: Technical; Avalie e selecione.
+
+### 4. Pacote Completo de Prompt
+Usuário: "Engenharia full para LLM" → Gemini/generate_prompt (base) → WebSearch/query_internet (contexto) → LangChain/orchestrate_prompt (integre RAG) → CrewAI/setup_agents (multi-agent para revisão) → Integre Self-Consistency: Gere múltiplas versões, vote na melhor.
+
+### 5. Desenvolvimento de Site
+Usuário: "Configure preceto-website" → GitHub/get_repo_info (estrutura) → CodeExecution/execute_refinement (gere componentes React) → GoogleGenAI/integrate_api (setup keys loop) → Use Reflection: Reflita sobre design minimalista e limites.
+
+### 6. Otimização com RAG
+Usuário: "Enriqueça prompt com dados" → WebSearch/query_internet (retrieval) → Gemini/generate_prompt (integre) → Aplique Faithful CoT: Garanta fidelidade no processo.
+
+### 7. Multi-Agent para Complexidade
+Usuário: "Orquestre prompts avançados" → CrewAI/setup_agents (setup) → LangChain/orchestrate_prompt (ReAct loop) → Virtuals/launch_prompt_agent (automação).
+
+## Parâmetros Principais
+
+### Parâmetros Comuns
+- `input`: Texto do usuário, max 3000 chars.
+- `model`: mini, plus, engineer - Define qualidade e formato.
+- `style`: simple, concise, technical - Alinha tom do output.
+- `technique`: cot, react, tot, etc. - Aplica técnica específica.
+- `max_chars`: Limite de output, default 8000.
+
+### Específicos de Geração
+- `keys`: Array de API keys em .env, separado por vírgula, para loop infinito com retry.
+- `format`: texto, md, yaml-md - Automático por model.
+
+## Pontos de Dados Principais
+
+### Dados de Prompt
+- Input corrigido e reorganizado.
+- Técnicas aplicadas com descrições.
+- Formato por model: mini (plano), plus (MD), engineer (YAML + MD).
+
+### Dados de Otimização
+- Redução de alucinações via RAG.
+- Melhoria de raciocínio via CoT/ToT.
+- Limites respeitados para economia.
+
+### Dados de Desenvolvimento
+- Configurações para Next.js, React, etc.
+- Ícones para UI: modelo, enviar, estilo, regenerar, adicionar.
+
+## Quando Usar Essa Skill
+
+**SEMPRE invoque APIs quando usuários mencionarem:**
+- **Prompts**: "otimize prompt", "crie prompt", "refine", "melhore"
+- **Técnicas**: "use cot", "aplique react", "explore tot"
+- **Modelos**: "mini", "plus", "engineer"
+- **Desenvolvimento**: "configure site", "nextjs", "react", "gemini"
+- **Limites**: "max chars", "input 3000"
+- **Integrações**: "rag", "multi-agent", "keys loop"
+
+**Combinações de API Requeridas:**
+- Geração básica → DEVE chamar `Gemini/generate_prompt` + `LangChain/orchestrate_prompt`
+- Técnicas avançadas → DEVE incluir `LangGraph/build_workflow` + `CrewAI/setup_agents`
+- Desenvolvimento → DEVE usar `CodeExecution/execute_refinement` + `GoogleGenAI/integrate_api`
+
+## Melhores Práticas
+
+1. **Limites Rígidos** - Sempre verifique input <3000, output <8000.
+2. **Loop de Keys** - Implemente retry infinito sem perda de dados.
+3. **Design Minimalista** - UI como xAI, com ícones Phosphor.
+4. **Técnicas Integradas** - Use CoT para decomposição; ReAct para actions; ToT para variações.
+5. **Economia de Tokens** - Prefira mini para simple; engineer para complexo.
+6. **CI/CD** - Configure para GitHub/Vercel.
+7. **Sem Src** - Estrutura plana profissional.
+
+## Exemplos de Prompts Usando Técnicas
+
+### Exemplo CoT (Zero-Shot)
+Pense passo a passo para otimizar prompt: 1. Analise input. 2. Corrija gramática. 3. Aplique formato. Resposta: [Output].
+
+### Exemplo ReAct
+Resolva refinamento: Thought: Selecione model. Action: Chame Gemini. Observation: Gerado. Thought: Formate. Action: Aplique MD/YAML. Resposta: [Final].
+
+### Exemplo ToT
+Explore árvore para variações: Caminho1: Mini? Caminho2: Plus? Caminho3: Engineer? Avalie, backtrack se exceder limites.
+
+### Exemplo Self-Consistency
+Gere 3 versões, vote na consistente: Version1: [Prompt]... Version3: [...]. Selecione majority.
+
+## Perguntas Exemplares para Técnicas de Prompt
+
+### Perguntas para CoT
+Pergunta 1? Como otimizar prompt simple? Pense passo a passo: 1. Input. 2. Corrija. 3. Output mini. Resposta: [Texto].
+Pergunta 2? Refina para engineer? Pense passo a passo: 1. YAML header. 2. MD steps. Resposta: [Formato].
+
+### Perguntas para ReAct
+Pergunta 1? Gere plus? Thought: Formate MD. Action: Chame API. Observation: Dados. Thought: Limite chars. Resposta: [MD].
+Pergunta 2? Integre técnica? Thought: Aplique ToT. Action: Explore paths. Observation: Variações. Resposta: [Melhor].
+
+### Perguntas para ToT
+Pergunta 1? Variações de estilo? Gere árvore: Caminho1: Simple? Caminho2: Concise? Caminho3: Technical? Selecione.
+Pergunta 2? Modelos comparados? Árvores: Caminho1: Mini? Caminho2: Plus? Caminho3: Engineer? Priorize.
+
+### Perguntas para Outras Técnicas
+Pergunta 1? Use RAG? Gere faithful CoT: 1. Retrieval. 2. Integre. 3. Reflexão. Vote consistência.
+Pergunta 2? Refina com agent? Reflexão: Falhas? Adicione. Self-consistency: 3 versões, vote.
+
+## Referência de API
+
+Especificações completas de parâmetros e esquemas de resposta:
+- [gemini-api.md](references/gemini-api.md)
+- [langchain-api.md](references/langchain-api.md)
+- [nextjs-guide.md](references/nextjs-guide.md)
+- [react-ui.md](references/react-ui.md)
+- [prompt-techniques.md](references/prompt-techniques.md)
