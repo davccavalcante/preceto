@@ -148,7 +148,7 @@ desktop.ini
 $RECYCLE.BIN/
 
 ## Dependencies & Packages
-package-lock.json
+# package-lock.json
 yarn.lock
 composer.lock
 pnpm-lock.yaml

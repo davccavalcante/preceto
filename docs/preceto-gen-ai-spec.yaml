@@ -2,13 +2,13 @@
 name: preceto
 description: "Otimize, refine, melhore e crie prompts para LLMs usando técnicas avançadas de engenharia de prompts. Integre dados do usuário, APIs e ferramentas para gerar prompts eficientes, reduzindo alucinações e melhorando o raciocínio em tarefas complexas. Suporte para desenvolvimento de sites como preceto-website em Next.js com App Router, React, TypeScript, Framer Motion, Shadcn/ui, Radix UI, Phosphor Icons, Prebid.js e @google/genai. Incorpore CI/CD para GitHub com deploy no Vercel. Foque em design minimalista estilo xAI, com input limitado a 3000 caracteres, seleção de modelos (mini, plus, engineer) e estilos (simple, concise, technical). Outputs formatados por modelo: mini (texto corrigido), plus (MD code), engineer (YAML + MD code), com limites de 8000 caracteres. Use múltiplas keys Gemini 2.5 Pro em .env com loop para resiliência."
 author: "David C Cavalcante"
-version: "1.0.0"
+version: "1.0.1"
 company: "Takk Innovate Studio"
 category: "Development"
 tags: ["development", "ia-ml", "prompt-engineering", "llmops", "lmops", "nextjs", "react", "typescript", "framer-motion", "shadcn-ui", "radix-ui", "phosphor-icons", "prebidjs", "google-genai", "cicd", "vercel", "gemini", "cot", "react-prompt", "tot", "self-consistency", "meta-prompting", "rag", "multi-agent", "prompt-chaining", "zero-shot", "few-shot", "role-prompting", "iterative-prompting"]
 license: "CC BY-NC-SA"
 repository: "https://github.com/takk-innovate-studio/preceto"
-homepage: "https://preceto.vercel.app"
+homepage: "https://preceto.im"
 bugs: "https://github.com/takk-innovate-studio/preceto/issues"
 tools: ['Gemini/generate_prompt', 'LangChain/orchestrate_prompt', 'WebSearch/query_internet', 'CodeExecution/execute_refinement', 'GitHub/get_repo_info', 'PyPI/get_package_details', 'Virtuals/launch_prompt_agent', 'OriginTrail/get_dkg_data', 'LangGraph/build_workflow', 'CrewAI/setup_agents', 'HuggingFace/get_model_details', 'GoogleGenAI/integrate_api']
 dependencies: ["next@16.1.6", "react@19.2", "typescript@5.9", "framer-motion", "shadcn-ui", "radix-ui", "phosphor-icons", "prebid.js", "@google/genai", "langchain>=2.0", "huggingface-hub", "torch", "tensorflow", "keras", "nodejs>=20"]

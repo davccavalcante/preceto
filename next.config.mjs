@@ -6,9 +6,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  turbopack: {
-    root: "/Users/davidcavalcante/Takk/Hub/projects/Preceto/preceto-website",
-  },
 }
 
 export default nextConfig

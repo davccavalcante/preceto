@@ -1,6 +1,6 @@
 # Preceto Website
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)
 ![HIM](https://img.shields.io/badge/HIM_Model-1.0.4-purple.svg)
 ![License](https://img.shields.io/badge/license-Proprietary-lightgrey.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D22.x-informational)
@@ -9,9 +9,9 @@
 ![React](https://img.shields.io/badge/React-19.2.4-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue)
 
-[![Star History Chart](https://api.star-history.com/svg?repos=davccavalcante/preceto&type=date&legend=top-left)](https://www.star-history.com/#davccavalcante/preceto&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/svg?repos=davccavalcante/preceto&type=timeline&legend=top-left)](https://www.star-history.com/#davccavalcante/preceto&type=timeline&legend=top-left)
 
-Preceto is an advanced prompt engineering system for optimizing, refining, and generating high-performance prompts for Large Language Models (LLMs). Built on the **HIM™ (Hybrid Entity Intelligence Model)** framework created by **David C Cavalcante**, Preceto integrates cutting-edge techniques such as Chain of Thought (CoT), Tree of Thoughts (ToT), and Self-Consistency to reduce hallucinations and enhance reasoning capabilities in complex tasks. This repository contains the Preceto web application: a production-grade Next.js interface for prompt optimization with tiered output formats and technique-aware prompting.
+Preceto (preceto.im), intelligence massive, is an advanced prompt engineering system for optimizing, refining, and generating high-performance prompts for Large Language Models (LLMs). Built on the **HIM™ (Hybrid Entity Intelligence Model)** framework created by **David C Cavalcante**, Preceto integrates cutting-edge techniques such as Chain of Thought (CoT), Tree of Thoughts (ToT), and Self-Consistency to reduce hallucinations and enhance reasoning capabilities in complex tasks. This repository contains the Preceto web application: a production-grade Next.js interface for prompt optimization with tiered output formats and technique-aware prompting.
 
 The project references HIM Model 1.0.4 as a structured approach for hybrid, agentic systems that combine reasoning, tool use, and retrieval. HIM™ (Hybrid Entity Intelligence Model) appears in a research abstract hosted by PhilArchive: https://philarchive.org/rec/CRTTSO.
 

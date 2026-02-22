@@ -1,7 +1,7 @@
 {
   "name": "preceto-website",
   "description": "Preceto refine, restructure and optimize your AI/LLM prompts with hight precision engineering.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "license": "Apache-2.0",
@@ -44,6 +44,7 @@
     "takk8-ag",
     "takk8is",
     "preceto-website",
+    "preceto.im",
     "preceto"
   ],
   "engines": {
@@ -51,9 +52,9 @@
     "npm": ">=10.x"
   },
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
+    "dev": "next dev --turbopack -p 8001",
+    "build": "next build --turbopack",
+    "start": "next start -p 8001",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "type-check": "tsc --noEmit",
@@ -64,7 +65,7 @@
     "db:generate": "supabase gen types typescript --local > src/types/database.types.ts",
     "db:push": "supabase db push",
     "db:reset": "supabase db reset",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build --turbopack"
   },
   "dependencies": {
     "@google/genai": "^1.42.0",
@@ -100,6 +101,7 @@
     "@sentry/nextjs": "^10.39.0",
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.97.0",
+    "@tailwindcss/postcss": "^4.2.0",
     "@tensorflow/tfjs": "^4.22.0",
     "@tensorflow/tfjs-node": "^4.22.0",
     "@vercel/analytics": "^1.6.1",
@@ -127,7 +129,6 @@
     "vaul": "^1.1.2"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.2.0",
     "@types/node": "^25.3.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

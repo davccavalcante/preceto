@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   generator: 'Preceto',
   applicationName: 'Preceto',
   referrer: 'origin-when-cross-origin',
-  authors: [{ name: 'David C Cavalcante', url: 'https://preceto.vercel.app' }],
+  authors: [{ name: 'David C Cavalcante', url: 'https://preceto.im' }],
   creator: 'David C Cavalcante',
   publisher: 'David C Cavalcante',
   formatDetection: {
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: 'Preceto — Advanced Prompt Engineering & LLM Optimization',
     description:
       'Experience the next evolution of interaction. Preceto refines, optimizes, and scales your prompts for LLMs with surgical precision.',
-    url: 'https://preceto.vercel.app',
+    url: 'https://preceto.im',
     siteName: 'Preceto',
     locale: 'en_US',
     type: 'website',

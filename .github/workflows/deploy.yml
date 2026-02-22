@@ -1,0 +1,274 @@
+name: Build and Deploy to VPS
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: Production
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        env:
+          SITE_URL: ${{ secrets.SITE_URL }}
+          PORT: ${{ secrets.PORT }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+          NEXT_LOCALE: ${{ secrets.NEXT_LOCALE }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ secrets.GEMINI_MODEL }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          VERCEL_ANALYTICS_ID: ${{ secrets.VERCEL_ANALYTICS_ID }}
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
+          NEXT_PUBLIC_GTM_ID: ${{ secrets.NEXT_PUBLIC_GTM_ID }}
+          NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID }}
+          NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL: ${{ secrets.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL }}
+          NEXT_PUBLIC_ADSENSE_PUBLISHER_ID: ${{ secrets.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID }}
+          NEXT_PUBLIC_ADSENSE_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_ADSENSE_CLIENT_ID }}
+          LINKEDIN_PARTNER_ID: ${{ secrets.LINKEDIN_PARTNER_ID }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEXT_PUBLIC_GAM_NETWORK_CODE: ${{ secrets.NEXT_PUBLIC_GAM_NETWORK_CODE }}
+          NEXT_PUBLIC_AMAZON_TAM_PUB_ID: ${{ secrets.NEXT_PUBLIC_AMAZON_TAM_PUB_ID }}
+          NEXT_PUBLIC_META_AN_PLACEMENT_ID: ${{ secrets.NEXT_PUBLIC_META_AN_PLACEMENT_ID }}
+          STRIPE_PUBLIC_KEY: ${{ secrets.STRIPE_PUBLIC_KEY }}
+          STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          SUPABASE_USER: ${{ secrets.SUPABASE_USER }}
+          SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
+          SUPABASE_ORG_NAME: ${{ secrets.SUPABASE_ORG_NAME }}
+          SUPABASE_ORG_SLUG: ${{ secrets.SUPABASE_ORG_SLUG }}
+          SUPABASE_PROJECT_NAME: ${{ secrets.SUPABASE_PROJECT_NAME }}
+          SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
+          SUPABASE_REGION: ${{ secrets.SUPABASE_REGION }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_JWT_SECRET: ${{ secrets.SUPABASE_JWT_SECRET }}
+          SUPABASE_ACCESS_TOKEN_EXPIRY_TIME: ${{ secrets.SUPABASE_ACCESS_TOKEN_EXPIRY_TIME }}
+          SUPABASE_EXPOSED_SCHEMAS: ${{ secrets.SUPABASE_EXPOSED_SCHEMAS }}
+          SUPABASE_STORAGE_S3_ENDPOINT: ${{ secrets.SUPABASE_STORAGE_S3_ENDPOINT }}
+          SUPABASE_STORAGE_S3_REGION: ${{ secrets.SUPABASE_STORAGE_S3_REGION }}
+          SUPABASE_STORAGE_S3_ACCESS_KEY_ID: ${{ secrets.SUPABASE_STORAGE_S3_ACCESS_KEY_ID }}
+          SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY: ${{ secrets.SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY }}
+          GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
+          GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+        run: npm run build
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.2.2
+        env:
+          SITE_URL: ${{ secrets.SITE_URL }}
+          PORT: ${{ secrets.PORT }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+          NEXT_LOCALE: ${{ secrets.NEXT_LOCALE }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ secrets.GEMINI_MODEL }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          VERCEL_ANALYTICS_ID: ${{ secrets.VERCEL_ANALYTICS_ID }}
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
+          NEXT_PUBLIC_GTM_ID: ${{ secrets.NEXT_PUBLIC_GTM_ID }}
+          NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID }}
+          NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL: ${{ secrets.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL }}
+          NEXT_PUBLIC_ADSENSE_PUBLISHER_ID: ${{ secrets.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID }}
+          NEXT_PUBLIC_ADSENSE_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_ADSENSE_CLIENT_ID }}
+          LINKEDIN_PARTNER_ID: ${{ secrets.LINKEDIN_PARTNER_ID }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEXT_PUBLIC_GAM_NETWORK_CODE: ${{ secrets.NEXT_PUBLIC_GAM_NETWORK_CODE }}
+          NEXT_PUBLIC_AMAZON_TAM_PUB_ID: ${{ secrets.NEXT_PUBLIC_AMAZON_TAM_PUB_ID }}
+          NEXT_PUBLIC_META_AN_PLACEMENT_ID: ${{ secrets.NEXT_PUBLIC_META_AN_PLACEMENT_ID }}
+          STRIPE_PUBLIC_KEY: ${{ secrets.STRIPE_PUBLIC_KEY }}
+          STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          SUPABASE_USER: ${{ secrets.SUPABASE_USER }}
+          SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
+          SUPABASE_ORG_NAME: ${{ secrets.SUPABASE_ORG_NAME }}
+          SUPABASE_ORG_SLUG: ${{ secrets.SUPABASE_ORG_SLUG }}
+          SUPABASE_PROJECT_NAME: ${{ secrets.SUPABASE_PROJECT_NAME }}
+          SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
+          SUPABASE_REGION: ${{ secrets.SUPABASE_REGION }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_JWT_SECRET: ${{ secrets.SUPABASE_JWT_SECRET }}
+          SUPABASE_ACCESS_TOKEN_EXPIRY_TIME: ${{ secrets.SUPABASE_ACCESS_TOKEN_EXPIRY_TIME }}
+          SUPABASE_EXPOSED_SCHEMAS: ${{ secrets.SUPABASE_EXPOSED_SCHEMAS }}
+          SUPABASE_STORAGE_S3_ENDPOINT: ${{ secrets.SUPABASE_STORAGE_S3_ENDPOINT }}
+          SUPABASE_STORAGE_S3_REGION: ${{ secrets.SUPABASE_STORAGE_S3_REGION }}
+          SUPABASE_STORAGE_S3_ACCESS_KEY_ID: ${{ secrets.SUPABASE_STORAGE_S3_ACCESS_KEY_ID }}
+          SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY: ${{ secrets.SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY }}
+          GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
+          GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+        with:
+          host: 82.25.79.245
+          username: root
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          timeout: 60s
+          command_timeout: 15m
+          envs: SITE_URL,PORT,NODE_ENV,NEXT_LOCALE,GEMINI_API_KEY,GEMINI_MODEL,SENTRY_AUTH_TOKEN,SENTRY_DSN,SENTRY_ORG,SENTRY_PROJECT,CLOUDFLARE_ZONE_ID,CLOUDFLARE_ACCOUNT_ID,VERCEL_ANALYTICS_ID,NEXT_PUBLIC_GA_MEASUREMENT_ID,NEXT_PUBLIC_GTM_ID,NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID,NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL,NEXT_PUBLIC_ADSENSE_PUBLISHER_ID,NEXT_PUBLIC_ADSENSE_CLIENT_ID,LINKEDIN_PARTNER_ID,RESEND_API_KEY,NEXT_PUBLIC_GAM_NETWORK_CODE,NEXT_PUBLIC_AMAZON_TAM_PUB_ID,NEXT_PUBLIC_META_AN_PLACEMENT_ID,STRIPE_PUBLIC_KEY,STRIPE_API_KEY,STRIPE_SECRET_KEY,SUPABASE_USER,SUPABASE_PASSWORD,SUPABASE_ORG_NAME,SUPABASE_ORG_SLUG,SUPABASE_PROJECT_NAME,SUPABASE_PROJECT_ID,SUPABASE_REGION,SUPABASE_URL,SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY,SUPABASE_JWT_SECRET,SUPABASE_ACCESS_TOKEN_EXPIRY_TIME,SUPABASE_EXPOSED_SCHEMAS,SUPABASE_STORAGE_S3_ENDPOINT,SUPABASE_STORAGE_S3_REGION,SUPABASE_STORAGE_S3_ACCESS_KEY_ID,SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY,GIT_USER_NAME,GIT_USER_EMAIL,GIT_TOKEN,VPS_HOST
+          script: |
+            set -e
+
+            # Define project directory
+            PROJECT_DIR="/home/fjallstoppur/preceto"
+            REPO_URL="https://$GIT_USER_NAME:$GIT_TOKEN@github.com/davccavalcante/preceto.git"
+
+            # Create directory only if it doesn't exist
+            if [ ! -d "$PROJECT_DIR" ]; then
+              echo "Creating project directory: $PROJECT_DIR"
+              mkdir -p "$PROJECT_DIR"
+            else
+              echo "Project directory already exists: $PROJECT_DIR"
+            fi
+
+            cd "$PROJECT_DIR"
+
+            # Initialize git repository if it doesn't exist
+            if [ ! -d ".git" ]; then
+              echo "Initializing git repository..."
+              git init
+              git remote add origin "$REPO_URL"
+            else
+              echo "Git repository already initialized"
+              # Ensure remote origin is correct
+              if ! git remote get-url origin > /dev/null 2>&1; then
+                echo "Adding remote origin..."
+                git remote add origin "$REPO_URL"
+              elif [ "$(git remote get-url origin)" != "$REPO_URL" ]; then
+                echo "Updating remote origin URL..."
+                git remote set-url origin "$REPO_URL"
+              fi
+            fi
+
+            # Configure git credentials
+            git config --global user.name "$GIT_USER_NAME"
+            git config --global user.email "$GIT_USER_EMAIL"
+            git config --global init.defaultBranch main
+            git config --global credential.helper "store --file ~/.git-credentials"
+            echo "https://$GIT_USER_NAME:$GIT_TOKEN@github.com" > ~/.git-credentials
+
+            # Fetch and update code
+            echo "Fetching latest code from main branch..."
+            git fetch origin main
+            git reset --hard origin/main
+
+            # Install dependencies only if package.json exists
+            if [ -f "package.json" ]; then
+              echo "Installing dependencies..."
+              npm ci
+            else
+              echo "Warning: package.json not found, skipping dependency installation"
+            fi
+            export SITE_URL=$SITE_URL
+            export PORT=$PORT
+            export NODE_ENV=$NODE_ENV
+            export NEXT_LOCALE=$NEXT_LOCALE
+            export GEMINI_API_KEY=$GEMINI_API_KEY
+            export GEMINI_MODEL=$GEMINI_MODEL
+            export SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN
+            export SENTRY_DSN=$SENTRY_DSN
+            export SENTRY_ORG=$SENTRY_ORG
+            export SENTRY_PROJECT=$SENTRY_PROJECT
+            export CLOUDFLARE_ZONE_ID=$CLOUDFLARE_ZONE_ID
+            export CLOUDFLARE_ACCOUNT_ID=$CLOUDFLARE_ACCOUNT_ID
+            export VERCEL_ANALYTICS_ID=$VERCEL_ANALYTICS_ID
+            export NEXT_PUBLIC_GA_MEASUREMENT_ID=$NEXT_PUBLIC_GA_MEASUREMENT_ID
+            export NEXT_PUBLIC_GTM_ID=$NEXT_PUBLIC_GTM_ID
+            export NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID=$NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID
+            export NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL=$NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL
+            export NEXT_PUBLIC_ADSENSE_PUBLISHER_ID=$NEXT_PUBLIC_ADSENSE_PUBLISHER_ID
+            export NEXT_PUBLIC_ADSENSE_CLIENT_ID=$NEXT_PUBLIC_ADSENSE_CLIENT_ID
+            export LINKEDIN_PARTNER_ID=$LINKEDIN_PARTNER_ID
+            export RESEND_API_KEY=$RESEND_API_KEY
+            export NEXT_PUBLIC_GAM_NETWORK_CODE=$NEXT_PUBLIC_GAM_NETWORK_CODE
+            export NEXT_PUBLIC_AMAZON_TAM_PUB_ID=$NEXT_PUBLIC_AMAZON_TAM_PUB_ID
+            export NEXT_PUBLIC_META_AN_PLACEMENT_ID=$NEXT_PUBLIC_META_AN_PLACEMENT_ID
+            export STRIPE_PUBLIC_KEY=$STRIPE_PUBLIC_KEY
+            export STRIPE_API_KEY=$STRIPE_API_KEY
+            export STRIPE_SECRET_KEY=$STRIPE_SECRET_KEY
+            export SUPABASE_USER=$SUPABASE_USER
+            export SUPABASE_PASSWORD=$SUPABASE_PASSWORD
+            export SUPABASE_ORG_NAME=$SUPABASE_ORG_NAME
+            export SUPABASE_ORG_SLUG=$SUPABASE_ORG_SLUG
+            export SUPABASE_PROJECT_NAME=$SUPABASE_PROJECT_NAME
+            export SUPABASE_PROJECT_ID=$SUPABASE_PROJECT_ID
+            export SUPABASE_REGION=$SUPABASE_REGION
+            export SUPABASE_URL=$SUPABASE_URL
+            export SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY
+            export SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_ROLE_KEY
+            export SUPABASE_JWT_SECRET=$SUPABASE_JWT_SECRET
+            export SUPABASE_ACCESS_TOKEN_EXPIRY_TIME=$SUPABASE_ACCESS_TOKEN_EXPIRY_TIME
+            export SUPABASE_EXPOSED_SCHEMAS=$SUPABASE_EXPOSED_SCHEMAS
+            export SUPABASE_STORAGE_S3_ENDPOINT=$SUPABASE_STORAGE_S3_ENDPOINT
+            export SUPABASE_STORAGE_S3_REGION=$SUPABASE_STORAGE_S3_REGION
+            export SUPABASE_STORAGE_S3_ACCESS_KEY_ID=$SUPABASE_STORAGE_S3_ACCESS_KEY_ID
+            export SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY=$SUPABASE_STORAGE_S3_SECRET_ACCESS_KEY
+            export GIT_USER_NAME=$GIT_USER_NAME
+            export GIT_USER_EMAIL=$GIT_USER_EMAIL
+            export GIT_TOKEN=$GIT_TOKEN
+            export VPS_HOST=$VPS_HOST
+            npm run build
+
+            # Fix for Next.js standalone mode - copy public and static folders to standalone directory
+            if [ -d ".next/standalone" ]; then
+              if [ -d "public" ]; then
+                echo "Copying public folder to standalone directory..."
+                cp -r public .next/standalone/public
+                echo "Public folder copied successfully"
+              else
+                echo "Warning: public directory not found"
+              fi
+
+              if [ -d ".next/static" ]; then
+                echo "Copying static folder to standalone directory..."
+                mkdir -p .next/standalone/.next
+                cp -r .next/static .next/standalone/.next/static
+                echo "Static folder copied successfully"
+              else
+                echo "Warning: .next/static directory not found"
+              fi
+            else
+              echo "Warning: .next/standalone directory not found"
+            fi
+
+            pm2 restart preceto || pm2 start npm --name "preceto" -- start
+            pm2 save
+            echo "Deployment completed successfully"
+
+      - name: Health Check
+        run: |
+          echo "Waiting for application to start..."
+          sleep 15
+          echo "Performing health check..."
+          curl -f -s -o /dev/null -w "%{http_code}" https://preceto.im | grep -q "200" || {
+            echo "Health check failed - application may not be responding correctly"
+            exit 1
+          }
+          echo "Health check passed - application is running successfully"
