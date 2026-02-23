@@ -139,3 +139,13 @@ export async function generateWithKeyRotation(
     }
   }
 }
+
+export async function generateWithSingleKey(
+  key: string,
+  prompt: string,
+  model: string,
+  options: RotationOptions = {}
+): Promise<string> {
+  const execute = options.execute ?? defaultExecute
+  return execute(key, prompt, model)
+}

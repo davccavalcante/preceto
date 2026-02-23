@@ -1,6 +1,6 @@
 # Preceto Website
 
-![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)
+![Version](https://img.shields.io/badge/version-1.0.2-blue.svg)
 ![HIM](https://img.shields.io/badge/HIM_Model-1.0.4-purple.svg)
 ![License](https://img.shields.io/badge/license-Proprietary-lightgrey.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D22.x-informational)
@@ -134,8 +134,14 @@ Sponsor Preceto on GitHub: [Sponsor](https://github.com/sponsors/davccavalcante)
 
 ## License
 
-See LICENSE.txt for the binding terms governing use, copying, and distribution.
+Preceto is open source for personal or internal use. MAIC™, HIM™, NHE™ are proprietary and may not be copied, distributed, or used without explicit permission from David Côrtes Cavalcante. See LICENSE.txt for the binding terms governing use, copying, and distribution.
+
+MAIC™ (Massive Artificial Intelligence Consciousness) is a systemic intelligence framework designed to coordinate, supervise, and govern large-scale artificial intelligence ecosystems. It provides global context awareness, alignment, and orchestration across multiple models, agents, and decision layers, ensuring coherence, risk control, and compliance throughout complex AI operations.
+
+HIM™ (Hybrid Intelligence Model) is a hybrid intelligence layer that integrates artificial intelligence systems with human-defined logic, rules, heuristics, and strategic intent. HIM™ functions as a passive cognitive core, responsible for interpreting objectives, refining intent, and structuring decision-making processes before and after AI model execution.
+
+NHE™ (Non-Human Entity) refers to a non-human cognitive entity with a defined functional identity and operational agency within an AI ecosystem. An NHE™ is not classified as artificial intelligence in isolation, but as an autonomous or semi-autonomous entity that operates through coordinated intelligence layers, interacting with systems, users, and environments while maintaining a non-anthropomorphic identity.
 
 # Privacy safeguards
 
-We protect your data with short retention windows for sensitive inputs, role-based access to session logs, and an explicit no-training policy—your prompts and feedback are never used to refine our models.
+MAIC™, HIM™, NHE™, and the Preceto platform are designed and operated in alignment with role-based access control (RBAC) principles and ISO/IEC 42001 requirements. Data handling follows strict governance policies, including controlled access to system components, segregation of duties, and short retention periods for sensitive information. Preceto enforces an explicit policy of not using personal or customer data for training or improving MAIC™, HIM™, or NHE™. All sensitive data processed within the Preceto ecosystem is protected using industry-standard encryption and cryptographic hashing, ensuring confidentiality, integrity, and accountability across the entire intelligence lifecycle.
