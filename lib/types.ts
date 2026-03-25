@@ -69,4 +69,4 @@ export const STYLE_CONFIG: Record<
 }
 
 export const MAX_INPUT_CHARS = 3000
-export const MAX_OUTPUT_CHARS = 8000
+export const MAX_OUTPUT_CHARS = 9000

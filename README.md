@@ -1,13 +1,13 @@
 # Preceto Website
 
-![Version](https://img.shields.io/badge/version-1.0.2-blue.svg)
-![HIM](https://img.shields.io/badge/HIM_Model-1.0.4-purple.svg)
-![License](https://img.shields.io/badge/license-Proprietary-lightgrey.svg)
-![Node](https://img.shields.io/badge/node-%3E%3D22.x-informational)
-![npm](https://img.shields.io/badge/npm-%3E%3D10.x-informational)
+![Version](https://img.shields.io/badge/version-1.0.3-black.svg)
+![HIM](https://img.shields.io/badge/HIM_Model-1.0.4-black.svg)
+![License](https://img.shields.io/badge/license-Proprietary-black.svg)
+![Node](https://img.shields.io/badge/node-%3E%3D22.x-black)
+![npm](https://img.shields.io/badge/npm-%3E%3D10.x-black)
 ![Next.js](https://img.shields.io/badge/Next.js-16.1.6-black)
-![React](https://img.shields.io/badge/React-19.2.4-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue)
+![React](https://img.shields.io/badge/React-19.2.4-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-black)
 
 [![Star History Chart](https://api.star-history.com/svg?repos=davccavalcante/preceto&type=timeline&legend=top-left)](https://www.star-history.com/#davccavalcante/preceto&type=timeline&legend=top-left)
 
@@ -20,7 +20,7 @@ The project references HIM Model 1.0.4 as a structured approach for hybrid, agen
 | Contract | Value |
 | :--- | :--- |
 | Input limit | 3000 characters |
-| Output limit | 8000 characters |
+| Output limit | 9000 characters |
 | Model tiers | mini, plus, engineer |
 | Styles | simple, concise, technical |
 | Core techniques | CoT, ReAct, ToT, Self-Consistency, RAG |

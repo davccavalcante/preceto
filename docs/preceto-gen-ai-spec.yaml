@@ -1,6 +1,6 @@
 ---
 name: preceto
-description: "Otimize, refine, melhore e crie prompts para LLMs usando técnicas avançadas de engenharia de prompts. Integre dados do usuário, APIs e ferramentas para gerar prompts eficientes, reduzindo alucinações e melhorando o raciocínio em tarefas complexas. Suporte para desenvolvimento de sites como preceto-website em Next.js com App Router, React, TypeScript, Framer Motion, Shadcn/ui, Radix UI, Phosphor Icons, Prebid.js e @google/genai. Incorpore CI/CD para GitHub com deploy no Vercel. Foque em design minimalista estilo xAI, com input limitado a 3000 caracteres, seleção de modelos (mini, plus, engineer) e estilos (simple, concise, technical). Outputs formatados por modelo: mini (texto corrigido), plus (MD code), engineer (YAML + MD code), com limites de 8000 caracteres. Use múltiplas keys Gemini 2.5 Pro em .env com loop para resiliência."
+description: "Otimize, refine, melhore e crie prompts para LLMs usando técnicas avançadas de engenharia de prompts. Integre dados do usuário, APIs e ferramentas para gerar prompts eficientes, reduzindo alucinações e melhorando o raciocínio em tarefas complexas. Suporte para desenvolvimento de sites como preceto-website em Next.js com App Router, React, TypeScript, Framer Motion, Shadcn/ui, Radix UI, Phosphor Icons, Prebid.js e @google/genai. Incorpore CI/CD para GitHub com deploy no Vercel. Foque em design minimalista estilo xAI, com input limitado a 3000 caracteres, seleção de modelos (mini, plus, engineer) e estilos (simple, concise, technical). Outputs formatados por modelo: mini (texto corrigido), plus (MD code), engineer (YAML + MD code), com limites de 9000 caracteres. Use múltiplas keys Gemini 2.5 Pro em .env com loop para resiliência."
 author: "David C Cavalcante"
 version: "1.0.2"
 company: "Takk Innovate Studio"
@@ -53,7 +53,7 @@ handoffs:
 
 # Engenharia de Prompts Avançada
 
-Otimização abrangente de prompts para LLMs, considerando técnicas clássicas e avançadas como CoT para decomposição passo a passo, ReAct para reasoning+acting, ToT para exploração de caminhos múltiplos, e Self-Consistency para robustez. Integra desenvolvimento com Next.js para o site preceto-website, React para UI interativa, TypeScript para tipagem segura, Framer Motion para animações suaves, Shadcn/ui e Radix UI para componentes minimalistas, Phosphor Icons para ícones, Prebid.js para monetização opcional, e @google/genai para integração com Gemini 2.5 Pro. Foque em input de 3000 caracteres max, seleção de modelo (mini: simple correção; plus: MD formatado; engineer: YAML + MD com técnicas completas), estilos (simple, concise, technical), e outputs limitados a 8000 caracteres. Use loop de keys em .env para resiliência em chamadas API.
+Otimização abrangente de prompts para LLMs, considerando técnicas clássicas e avançadas como CoT para decomposição passo a passo, ReAct para reasoning+acting, ToT para exploração de caminhos múltiplos, e Self-Consistency para robustez. Integra desenvolvimento com Next.js para o site preceto-website, React para UI interativa, TypeScript para tipagem segura, Framer Motion para animações suaves, Shadcn/ui e Radix UI para componentes minimalistas, Phosphor Icons para ícones, Prebid.js para monetização opcional, e @google/genai para integração com Gemini 2.5 Pro. Foque em input de 3000 caracteres max, seleção de modelo (mini: simple correção; plus: MD formatado; engineer: YAML + MD com técnicas completas), estilos (simple, concise, technical), e outputs limitados a 9000 caracteres. Use loop de keys em .env para resiliência em chamadas API.
 
 ## Capacidades Principais
 
@@ -93,7 +93,7 @@ Otimização abrangente de prompts para LLMs, considerando técnicas clássicas 
 Usuário: "Otimize prompt para análise" → Gemini/generate_prompt (gere versão inicial por modelo: mini/plus/engineer) → LangChain/orchestrate_prompt (aplique CoT: 1. Corrija gramática; 2. Reorganize; 3. Formate) → Aplique CoT: Pense passo a passo - 1. Analise input; 2. Selecione técnica; 3. Gere output limitado.
 
 ### 2. Seleção de Modelo → Output Formatado
-Usuário: "Crie prompt engineer para task" → Gemini/generate_prompt (use engineer: YAML header + MD steps) → CodeExecution/execute_refinement (teste formato) → Use ReAct: Thought: Verifique limites; Action: Chame API; Observation: Output gerado; Thought: Ajuste se >8000 chars.
+Usuário: "Crie prompt engineer para task" → Gemini/generate_prompt (use engineer: YAML header + MD steps) → CodeExecution/execute_refinement (teste formato) → Use ReAct: Thought: Verifique limites; Action: Chame API; Observation: Output gerado; Thought: Ajuste se >9000 chars.
 
 ### 3. Integração de Técnicas
 Usuário: "Aplique ToT em prompt" → LangGraph/build_workflow (construa árvore) → Gemini/generate_prompt (gere variações) → Aplique ToT: Gere caminhos - Caminho1: Simple; Caminho2: Concise; Caminho3: Technical; Avalie e selecione.
@@ -117,7 +117,7 @@ Usuário: "Orquestre prompts avançados" → CrewAI/setup_agents (setup) → Lan
 - `model`: mini, plus, engineer - Define qualidade e formato.
 - `style`: simple, concise, technical - Alinha tom do output.
 - `technique`: cot, react, tot, etc. - Aplica técnica específica.
-- `max_chars`: Limite de output, default 8000.
+- `max_chars`: Limite de output, default 9000.
 
 ### Específicos de Geração
 - `keys`: Array de API keys em .env, separado por vírgula, para loop infinito com retry.
@@ -156,7 +156,7 @@ Usuário: "Orquestre prompts avançados" → CrewAI/setup_agents (setup) → Lan
 
 ## Melhores Práticas
 
-1. **Limites Rígidos** - Sempre verifique input <3000, output <8000.
+1. **Limites Rígidos** - Sempre verifique input <3000, output <9000.
 2. **Loop de Keys** - Implemente retry infinito sem perda de dados.
 3. **Design Minimalista** - UI como xAI, com ícones Phosphor.
 4. **Técnicas Integradas** - Use CoT para decomposição; ReAct para actions; ToT para variações.

@@ -276,7 +276,7 @@ export default function HomePage() {
             {' for advanced AI engineering'}
           </p>
           <p className="text-xs text-preceto-text-dim">
-            {'v1.0.2 • m1.0.4'}
+            {'v1.0.3 • m1.0.4'}
           </p>
         </motion.footer>
       </div>
